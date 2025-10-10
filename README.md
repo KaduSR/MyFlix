@@ -1,4 +1,4 @@
-# MeuFlix 🎬
+# MyFlix 🎬
 
 ![GitHub language count](https://img.shields.io/github/languages/count/KaduSR/meu-flix?style=for-the-badge)
 ![GitHub top language](https://img.shields.io/github/languages/top/KaduSR/meu-flix?style=for-the-badge)
@@ -51,12 +51,12 @@ Para executar este projeto no seu ambiente local, siga os passos abaixo:
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [https://github.com/KaduSR/meu-flix.git](https://github.com/KaduSR/meu-flix.git)
+    git clone [https://github.com/KaduSR/Myflix.git](https://github.com/KaduSR/Myflix.git)
     ```
 
 2.  **Navegue para a pasta do projeto:**
     ```bash
-    cd meu-flix
+    cd Myflix
     ```
 
 3.  **Instale as dependências:**
