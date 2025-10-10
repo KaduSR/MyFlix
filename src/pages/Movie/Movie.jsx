@@ -30,7 +30,7 @@ function Movie() {
 
   // Função para formatar números como moeda (Real)
   const formatCurrency = (number) => {
-    return number.toLocaleString("pt-BR", {
+    return number.toLocaleString("en-US", {
       style: "currency",
       currency: "BRL",
     });
