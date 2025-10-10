@@ -1,26 +1,26 @@
 .movie_card {
     width: 200px;
-    list-style: none;
-    text-align: center;
-    color: var(--text-white);
+    /* Define uma largura fixa para o card */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    color: var(--text-white);
     background-color: var(--background-medium);
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    list-style: none;
+    text-align: center;
+
+    /* BORDA DE DEPURAÇÃO: VAI MOSTRAR OS LIMITES DO CARD */
+   /* border: 2px solid red; */
 }
 
-.movie_card {
+.movie_image {
     width: 100%;
-    height: auto;
-    margin-bottom: 0.5rem;
+    /* A imagem vai ocupar 100% da largura do card (200px) */
 }
 
 .movie_title {
     font-size: 1rem;
     font-weight: 500;
-    padding: 0.5rem;;
+    padding: 0.75rem;
 }
-
