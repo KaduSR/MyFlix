@@ -6,7 +6,7 @@
 
 Um catálogo de filmes e séries moderno e responsivo, inspirado na Netflix, construído com React e consumindo dados da API do The Movie Database (TMDB).
 
-**[➡️ Acesse a demonstração ao vivo aqui!](https://seu-link-aqui.com)**
+**[➡️ Acesse a demonstração ao vivo aqui!](https://myflix.kadudev.com/)**
 
 ---
 
@@ -51,7 +51,7 @@ Para executar este projeto no seu ambiente local, siga os passos abaixo:
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [https://github.com/KaduSR/Myflix.git](https://github.com/KaduSR/Myflix.git)
+    git clone https://github.com/KaduSR/Myflix.git
     ```
 
 2.  **Navegue para a pasta do projeto:**
