@@ -93,6 +93,12 @@ function Movie() {
                       ? formatCurrency(movie.budget)
                       : "Não informado"}
                   </p>
+                  <p>
+                    <h3>Receita:</h3>
+                    {movie.revenue > 0
+                      ? formatCurrency(movie.revenue)
+                      : "Não informado"}
+                  </p>
                 </div>
                 <div className={styles.info}>
                   <h3>Sinopse:</h3>
