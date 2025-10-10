@@ -85,19 +85,22 @@
     width:70px; /* Define o tamanho do círculo */
 }
 
-.overview{
-line-height: 1.7;
+.overview {
+    line-height: 1.7;
 }
 
 /* Estilo para telas Maiores(Responsividade) */
 @media(min-width: 768px) {
-    .movie_content{
-        flex-direction: row; /* Em telas maiores, fica lado a lado */
+    .movie_content {
+        flex-direction: row;
+        /* Em telas maiores, fica lado a lado */
         align-items: flex-start;
     }
+
     .movie_details {
         text-align: left;
     }
+
     .info_bar {
         justify-content: flex-start;
     }
@@ -121,7 +124,7 @@ line-height: 1.7;
 }
 
 /* Ajuste para alinhar à esquerda em telas Maiores */
-@media(min-width: 768px){
+@media(min-width: 768px) {
     .genres {
         justify-content: flex-start;
     }
@@ -147,58 +150,4 @@ line-height: 1.7;
 .trailer_button:hover {
     background-color: var(--text-white);
     color: var(--background-dark);
-}
-
-/* Estilos do Modal - ATUALIZE ESTAS CLASSES */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.85);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.modal {
-    position: relative;
-    /* Define a largura para 90% da largura da janela, com um máximo de 1440px */
-    width: 90vw;
-    max-width: 1440px;
-
-    /* A MÁGICA DA PROPORÇÃO 16:9 */
-    /* padding-top de 56.25% força o container a ter uma altura proporcional à largura */
-    padding-top: 56.25%;
-
-    background: black;
-    border: none;
-    outline: none;
-}
-
-.youtube_player {
-    /* Faz o player do YouTube preencher o container .modal */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-.close_modal_button {
-    position: absolute;
-    /* Coloca o botão "X" fora do vídeo, no canto superior direito */
-    top: -45px;
-    right: 0;
-    background: none;
-    border: none;
-    color: var(--text-white);
-    font-size: 2rem;
-    /* Aumenta o tamanho do ícone */
-    cursor: pointer;
-    z-index: 1001;
-    /* Garante que fica acima de tudo */
 }

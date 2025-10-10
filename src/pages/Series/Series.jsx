@@ -4,8 +4,7 @@ import "react-circular-progressbar/dist/styles.css";
 import { useParams } from "react-router-dom";
 import { FaStar, FaRegClock, FaPlay, FaTimes } from "react-icons/fa";
 import styles from "./Series.module.css"; // Lembre-se de usar o CSS de Serie
-import Modal from "react-modal";
-import YouTube from "react-youtube";
+import TrailerModal from "../../components/TrailerModal/TrailerModal";
 
 const apiKey = import.meta.env.VITE_API_KEY;
 const seriesURL = "https://api.themoviedb.org/3/tv/"; // URL alterada
@@ -119,22 +118,11 @@ function Series() {
           <p>Carregando detalhes da série...</p>
         )}
       </div>
-      <Modal
+      <TrailerModal
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
-        className={styles.modal}
-        overlayClassName={styles.overlay}
-      >
-        <button
-          className={styles.close_modal_button}
-          onClick={() => setModalIsOpen(false)}
-        >
-          <FaTimes size={20} />
-        </button>
-        {trailerKey && (
-          <YouTube videoId={trailerKey} className={styles.youtube_player} />
-        )}
-      </Modal>
+        trailerKey={trailerKey}
+      />
     </>
   );
 }
