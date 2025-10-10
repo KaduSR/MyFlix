@@ -1,0 +1,26 @@
+.movie_card {
+    width: 200px;
+    list-style: none;
+    text-align: center;
+    color: var(--text-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--background-medium);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.movie_card {
+    width: 100%;
+    height: auto;
+    margin-bottom: 0.5rem;
+}
+
+.movie_title {
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.5rem;;
+}
+
