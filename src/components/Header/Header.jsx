@@ -2,11 +2,11 @@ import styles from "./Header.module.css";
 
 function Header() {
   return (
-    <Header className={styles.header}>
+    <header className={styles.header}>
       <nav>
-        <h2>MeuFlix</h2>
+        <h2>MyFlix</h2>
       </nav>
-    </Header>
+    </header>
   );
 }
 

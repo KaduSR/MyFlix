@@ -1,13 +1,12 @@
 .header {
-  background-color: var(--background-dark); /* Usando variável */
+  background-color: var(--background-dark);
   padding: 1rem 2rem;
-  border-bottom: 1px solid var(--border-gray); /* Usando variável */
+  border-bottom: 1px solid var(--border-gray);
 }
 
 .header h2 {
-  color: var(--netflix-red); /* Usando variável */
+  color: var(--netflix-red);
   font-size: 1.5rem;
-  /* O font-family não é mais necessário aqui, pois já definimos no body */
   text-transform: uppercase;
-  font-weight: 700; /* Dando um peso maior para o logo */
+  font-weight: 700;
 }
