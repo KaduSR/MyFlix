@@ -1,5 +1,5 @@
 .movie_card {
-    width: 185px;
+    width: 200px;
     /* Tamanho padrão dos posters no TMDB */
     list-style: none;
     flex-shrink: 0;

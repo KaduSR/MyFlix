@@ -1,65 +1,92 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import styles from './Movie.module.css';
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { FaStar, FaWallet, FaRegClock } from "react-icons/fa"; // Ícones para os detalhes
+import styles from "./Movie.module.css";
 
 const apiKey = import.meta.env.VITE_API_KEY;
-const apiUrl = 'https://api.themoviedb.org/3/movie/';
-const imageUrl = 'https://image.tmdb.org/t/p/w500/'; // URL base para imagens
-
+const moviesURL = "https://api.themoviedb.org/3/movie/";
+const imageUrl = "https://image.tmdb.org/t/p/original/"; // Usaremos a imagem original para o fundo
 
 function Movie() {
-    const { id } = useParams();
-    const [movie, setMovie] = useState(null);
+  const { id } = useParams();
+  const [movie, setMovie] = useState(null);
 
-    async function getMovie() {
-    // Função para buscar os detalhes do filme na API
-    const response = await fetch(`${apiUrl}${id}?api_key=${apiKey}&language=pt_BR`);
-    const data = await response.json();
-    setMovie(data);
-}
+  async function getMovie(url) {
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      setMovie(data);
+    } catch (error) {
+      console.error("Erro ao buscar detalhes do filme:", error);
+    }
+  }
 
-useEffect(() => {
-    getMovie();
-}, [id]); // Reexecuta a busca se o ID do filme mudar
+  useEffect(() => {
+    const movieUrl = `${moviesURL}${id}?api_key=${apiKey}&language=pt-BR`;
+    getMovie(movieUrl);
+  }, [id]);
 
-//Formata o orçamento para o formato de moeda BRL
-function formatCurrency(number) {
-    return number.toLocaleString('pt-BR', {
-        style: 'currency',
-        currency: 'BRL',
-        minimumFractionDigits: 2,
+  // Função para formatar números como moeda (Real)
+  const formatCurrency = (number) => {
+    return number.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
     });
-}
+  };
 
-return (
-    <div className={styles.movie_page}>
-        {movie ? (
-            <>
-                <img className={styles.poster} src={imageUrl + movie.poster_path} alt={movie.title} />
-                <div className={styles.movie_details}>
-                    <h1>{movie.title}</h1>
-                    <p className={styles.tagline}>{movie.tagline}</p>
-                    <div className={styles.info}>
-                        <h3>Orçamento:</h3>
-                        <p>{movie.budget > 0 ? formatCurrency(movie.budget) : "Não informado"}</p>
-                    </div>
-                    <div className={styles.info}>
-                        <h3>Receita:</h3>
-                        <p>{movie.revenue > 0 ? formatCurrency(movie.revenue) : "Não informado"}</p>
-                    </div>
-                    <div className={styles.info}>
-                        <h3>Sinopse:</h3>
-                        <p className={styles.overview}>{movie.overview}</p>
-
-                    </div>
-
-                    </div>
-            </>
-    ) : (
-        <p>Carregando detalhes do filme...</p>
-    )}
-    </div>
-);
+  return (
+    <>
+      {movie && (
+        <div
+          className={styles.movie_page}
+          style={{ backgroundImage: `url(${imageUrl}${movie.backdrop_path})` }}
+        >
+          <div className={styles.movie_overlay}></div>
+          <div className={styles.movie_content}>
+            <img
+              className={styles.poster}
+              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              alt={movie.title}
+            />
+            <div className={styles.movie_details}>
+              <h1>{movie.title}</h1>
+              <p className={styles.tagline}>{movie.tagline}</p>
+              <div className={styles.info_bar}>
+                <span>
+                  <FaStar color="#f5c518" /> {movie.vote_average.toFixed(1)}
+                </span>
+                <span>
+                  <FaRegClock /> {movie.runtime} min
+                </span>
+              </div>
+              <div className={styles.info}>
+                <h3>
+                  <FaWallet /> Orçamento:
+                </h3>
+                <p>
+                  {movie.budget > 0
+                    ? formatCurrency(movie.budget)
+                    : "Não informado"}
+                </p>
+              </div>
+              <div className={styles.info}>
+                <h3>Receita:</h3>
+                <p>
+                  {movie.revenue > 0
+                    ? formatCurrency(movie.revenue)
+                    : "Não informado"}
+                </p>
+              </div>
+              <div className={styles.info}>
+                <h3>Sinopse:</h3>
+                <p className={styles.overview}>{movie.overview}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
 }
 
 export default Movie;

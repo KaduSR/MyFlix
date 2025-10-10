@@ -1,5 +1,5 @@
 .container {
-    padding: 2rem 4rem;
+    padding: 2rem 11rem;
     /* Mais espaçamento lateral */
 }
 
@@ -7,10 +7,12 @@
     color: var(--text-white);
     font-size: 2rem;
     margin-bottom: 1.5rem;
+    text-align: center;
 }
 
 .movies_container {
     display: flex;
+    align-items: center;
     /* Alinha os cards em linha */
     gap: 1.5rem;
     /* Espaçamento entre os cards */

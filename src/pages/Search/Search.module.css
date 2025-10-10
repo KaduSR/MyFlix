@@ -1,0 +1,22 @@
+.container {
+    padding: 2rem 4rem;
+}
+
+.title {
+    color: var(--text-white);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Deixa o termo pesquisado em vermelho */
+.query_text {
+    color: var(--netflix-red);
+}
+
+/* Usa o mesmo layout de grade da nossa página Home */
+.movies_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
