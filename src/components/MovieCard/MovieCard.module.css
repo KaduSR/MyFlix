@@ -1,26 +1,34 @@
 .movie_card {
-    width: 200px;
-    /* Define uma largura fixa para o card */
-    display: flex;
-    flex-direction: column;
-    color: var(--text-white);
-    background-color: var(--background-medium);
-    border-radius: 8px;
-    overflow: hidden;
+    width: 185px;
+    /* Tamanho padrão dos posters no TMDB */
     list-style: none;
-    text-align: center;
+    flex-shrink: 0;
+    /* Impede que o card seja espremido */
+}
 
-    /* BORDA DE DEPURAÇÃO: VAI MOSTRAR OS LIMITES DO CARD */
-   /* border: 2px solid red; */
+.movie_card a {
+    text-decoration: none;
 }
 
 .movie_image {
     width: 100%;
-    /* A imagem vai ocupar 100% da largura do card (200px) */
+    height: 278px;
+    /* Proporção padrão de pôster */
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    transition: transform 0.3s;
+    object-fit: cover;
+}
+
+.movie_image:hover {
+    transform: scale(1.05);
+    /* Efeito de zoom ao passar o mouse */
 }
 
 .movie_title {
+    color: var(--text-white);
     font-size: 1rem;
     font-weight: 500;
-    padding: 0.75rem;
+    white-space: normal;
+    /* Permite que o texto quebre a linha */
 }

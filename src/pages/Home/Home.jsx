@@ -1,42 +1,43 @@
-
-import styles from "./Home.module.css";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import MovieCard from "../../components/MovieCard/MovieCard";
-
-// Pegamos a chave da API do arquivo .env
+import styles from "./Home.module.css";
 
 const apiKey = import.meta.env.VITE_API_KEY;
-
-const apiURL = "https://api.themoviedb.org/3/movie/popular";
+const apiUrl = "https://api.themoviedb.org/3/movie/popular";
 
 function Home() {
-    const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState([]);
 
-    async function getMovies() {
-          // Usamos o 'Fetch API' para fazer a requisição
-    const response = await fetch(`${apiURL}?api_key=${apiKey}&language=pt-BR`);
-    const data = await response.json();
-
-    // Guardamos a lista de filmes(data.results) no estado 'movies'
-    setMovies(data.results);
+  async function getMovies() {
+    try {
+      const response = await fetch(
+        `${apiUrl}?api_key=${apiKey}&language=pt-BR`
+      );
+      if (!response.ok) throw new Error("Falha na resposta da API");
+      const data = await response.json();
+      setMovies(data.results);
+    } catch (error) {
+      console.error("Erro ao buscar filmes:", error);
     }
-    useEffect(() => {
-        // Chama a função para buscar os filmes quando o componente é montado
-        getMovies();
-    }, []);
+  }
 
-    return (
-        <div className={styles.container}>
-            <h2 className={styles.title}>Filmes Populares</h2>
-            <ul className={styles.movies_container}>
-                {/* Verificamos se a lista de filmes está vazia */}
-                {movies.length === 0 && <p>Carregando filmes...</p>}
-                {movies.length > 0 && 
-                movies.map(movie => <MovieCard key={movie.id} movie={movie} />)}
-            </ul>
-        </div>
-    );
+  useEffect(() => {
+    getMovies();
+  }, []);
+
+  return (
+    <div className={styles.container}>
+      <h2 className={styles.title}>Filmes Populares</h2>
+
+      <div className={styles.movies_container}>
+        {movies.length === 0 && <p>Carregando filmes...</p>}
+        {movies.length > 0 &&
+          movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
+      </div>
+
+      {/* Futuramente, podemos adicionar outras seções aqui, como "Séries Populares" */}
+    </div>
+  );
 }
-
 
 export default Home;

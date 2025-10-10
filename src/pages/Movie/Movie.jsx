@@ -24,7 +24,7 @@ useEffect(() => {
 
 //Formata o orçamento para o formato de moeda BRL
 function formatCurrency(number) {
-    return number.toLocaleString('pt_BR', {
+    return number.toLocaleString('pt-BR', {
         style: 'currency',
         currency: 'BRL',
         minimumFractionDigits: 2,
