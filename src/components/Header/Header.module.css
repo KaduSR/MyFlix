@@ -3,6 +3,8 @@
   padding: 1rem 4rem;
   /* Aumenta o espaçamento lateral */
   border-bottom: 1px solid var(--border-gray);
+  position: relative;
+  z-index: 10;
 }
 
 .header nav {

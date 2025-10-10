@@ -1,41 +1,30 @@
 .container {
-    padding: 2rem 11rem;
-    /* Mais espaçamento lateral */
+    padding: 2rem 4rem;
 }
 
 .title {
     color: var(--text-white);
     font-size: 2rem;
+    margin-top: 2rem;
     margin-bottom: 1.5rem;
-    text-align: center;
 }
 
 .movies_container {
     display: flex;
-    align-items: center;
-    /* Alinha os cards em linha */
     gap: 1.5rem;
-    /* Espaçamento entre os cards */
-
-    /* A MÁGICA ACONTECE AQUI */
+    padding-bottom: 1rem;
     overflow-x: scroll;
-    /* Habilita a rolagem horizontal */
     overflow-y: hidden;
-    /* Desabilita a rolagem vertical */
-
-    /* Deixa a barra de rolagem mais bonita */
     scrollbar-width: thin;
     scrollbar-color: var(--netflix-red) var(--background-medium);
 }
 
-/* Estilização da barra de rolagem para navegadores Webkit (Chrome, Safari) */
 .movies_container::-webkit-scrollbar {
     height: 8px;
 }
 
 .movies_container::-webkit-scrollbar-track {
     background: var(--background-medium);
-    border-radius: 10px;
 }
 
 .movies_container::-webkit-scrollbar-thumb {

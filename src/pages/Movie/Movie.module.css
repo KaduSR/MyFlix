@@ -149,7 +149,7 @@ line-height: 1.7;
     color: var(--background-dark);
 }
 
-/* Estilos do Modal */
+/* Estilos do Modal - ATUALIZE ESTAS CLASSES */
 .overlay {
     position: fixed;
     top: 0;
@@ -165,35 +165,40 @@ line-height: 1.7;
 
 .modal {
     position: relative;
-    width: 90%;
-    max-width: 800px;
+    /* Define a largura para 90% da largura da janela, com um máximo de 1440px */
+    width: 90vw;
+    max-width: 1440px;
+
+    /* A MÁGICA DA PROPORÇÃO 16:9 */
+    /* padding-top de 56.25% força o container a ter uma altura proporcional à largura */
     padding-top: 56.25%;
-    /* Proporção 16:9 */
+
     background: black;
+    border: none;
+    outline: none;
 }
 
 .youtube_player {
+    /* Faz o player do YouTube preencher o container .modal */
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    border: none;
 }
 
 .close_modal_button {
     position: absolute;
-    top: -40px;
+    /* Coloca o botão "X" fora do vídeo, no canto superior direito */
+    top: -45px;
     right: 0;
     background: none;
     border: none;
     color: var(--text-white);
-    font-size: 1.5rem;
+    font-size: 2rem;
+    /* Aumenta o tamanho do ícone */
     cursor: pointer;
-}
-
-/* Ajuste para telas maiores */
-@media (min-width: 768px) {
-    .trailer_button {
-        margin: 0;
-    }
+    z-index: 1001;
+    /* Garante que fica acima de tudo */
 }

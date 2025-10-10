@@ -7,7 +7,7 @@ import Home from "./pages/Home/Home";
 
 import Movie from "./pages/Movie/Movie";
 import Search from "./pages/Search/Search";
-import Series from "./pages/Series/Series";
+import Series from "./pages/Series/series";
 
 import "./index.css";
 
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: 'search',
+        path: "search",
         element: <Search />,
       },
       {
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
         element: <Movie />,
       },
       {
-        path: "series/:id",
+        path: "tv/:id",
         element: <Series />,
       },
     ],
