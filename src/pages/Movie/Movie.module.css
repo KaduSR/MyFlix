@@ -102,3 +102,27 @@ line-height: 1.7;
         justify-content: flex-start;
     }
 }
+
+/* Estilo dos Gêneros */
+.genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.genre {
+    padding: 0.3rem 0.6rem;
+    background-color: var(--background-medium);
+    border: 1px solid var(--border-gray);
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+/* Ajuste para alinhar à esquerda em telas Maiores */
+@media(min-width: 768px){
+    .genres {
+        justify-content: flex-start;
+    }
+}
