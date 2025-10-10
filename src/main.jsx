@@ -7,7 +7,7 @@ import Home from "./pages/Home/Home";
 
 import Movie from "./pages/Movie/Movie";
 import Search from "./pages/Search/Search";
-import Series from "./pages/Series/series";
+import Series from "./pages/Series/Series";
 
 import "./index.css";
 
