@@ -3,32 +3,32 @@ import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { useParams } from "react-router-dom";
 import { FaStar, FaWallet, FaRegClock, FaPlay, FaTimes } from "react-icons/fa"; // Ícones para os detalhes
-import styles from "./Movie.module.css";
+import styles from "./Tv.module.css";
 import Modal from "react-modal";
 import YouTube from "react-youtube";
 
 const apiKey = import.meta.env.VITE_API_KEY;
-const moviesURL = "https://api.themoviedb.org/3/movie/";
+const tvsURL = "https://api.themoviedb.org/3/tv/";
 const imageUrl = "https://image.tmdb.org/t/p/original/"; // Usaremos a imagem original para o fundo
 
-function Movie() {
+function Tv() {
   const { id } = useParams();
-  const [movie, setMovie] = useState(null);
+  const [tv, setTv] = useState(null);
   const [trailerKey, setTrailerKey] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  async function getMovie(url) {
+  async function getTv(url) {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      setMovie(data);
+      setTv(data);
     } catch (error) {
-      console.error("Erro ao buscar detalhes do filme:", error);
+      console.error("Erro ao buscar detalhes da série:", error);
     }
   }
 
   async function getVideos(id) {
-    const videosUrl = `${moviesURL}${id}/videos?api_key=${apiKey}&language=pt-BR`;
+    const videosUrl = `${tvsURL}${id}/videos?api_key=${apiKey}&language=pt-BR`;
     const response = await fetch(videosUrl);
     const data = await response.json();
 
@@ -44,8 +44,8 @@ function Movie() {
   }
 
   useEffect(() => {
-    const movieUrl = `${moviesURL}${id}?api_key=${apiKey}&language=pt-BR`;
-    getMovie(movieUrl);
+    const tvUrl = `${tvsURL}${id}?api_key=${apiKey}&language=pt-BR`;
+    getTv(tvUrl);
     getVideos(id); // Busca o vídeo do trailer
   }, [id]);
 
@@ -59,31 +59,31 @@ function Movie() {
 
   return (
     <>
-      <div className={styles.movie_page}>
-        {movie ? ( // Verifica se os dados do filme já chegaram
+      <div className={styles.tv_page}>
+        {tv ? ( // Verifica se os dados da série já chegaram
           <>
             {/* A div principal terá a imagem de fundo */}
             <div
-              className={styles.movie_backdrop}
+              className={styles.tv_backdrop}
               style={{
-                backgroundImage: `url(${imageUrl}${movie.backdrop_path})`,
+                backgroundImage: `url(${imageUrl}${tv.backdrop_path})`,
               }}
             >
-              <div className={styles.movie_overlay}></div> {/* Camada escura */}
-              <div className={styles.movie_content}>
+              <div className={styles.tv_overlay}></div> {/* Camada escura */}
+              <div className={styles.tv_content}>
                 <img
                   className={styles.poster}
-                  src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                  alt={movie.title}
+                  src={`https://image.tmdb.org/t/p/w500/${tv.poster_path}`}
+                  alt={tv.title}
                 />
-                <div className={styles.movie_details}>
-                  <h1>{movie.title}</h1>
-                  <p className={styles.tagline}>{movie.tagline}</p>
+                <div className={styles.tv_details}>
+                  <h1>{tv.title}</h1>
+                  <p className={styles.tagline}>{tv.tagline}</p>
                   <div className={styles.info_bar}>
                     <div className={styles.rating}>
                       <CircularProgressbar
-                        value={movie.vote_average * 10}
-                        text={`${(movie.vote_average * 10).toFixed(0)}%`}
+                        value={tv.vote_average * 10}
+                        text={`${(tv.vote_average * 10).toFixed(0)}%`}
                         background
                         backgroundPadding={6}
                         styles={buildStyles({
@@ -95,12 +95,12 @@ function Movie() {
                       />
                     </div>
                     <span>
-                      <FaRegClock /> {movie.runtime} min
+                      <FaRegClock /> {tv.runtime} min
                     </span>
                   </div>
                   <div className={styles.genres}>
-                    {movie.genres &&
-                      movie.genres.map((genre) => (
+                    {tv.genres &&
+                      tv.genres.map((genre) => (
                         <span key={genre.id} className={styles.genre}>
                           {genre.name}
                         </span>
@@ -120,8 +120,8 @@ function Movie() {
                       <FaWallet /> Orçamento:
                     </h3>
                     <p>
-                      {movie.budget > 0
-                        ? formatCurrency(movie.budget)
+                      {tv.budget > 0
+                        ? formatCurrency(tv.budget)
                         : "Não informado"}
                     </p>
                   </div>
@@ -132,16 +132,16 @@ function Movie() {
                       <FaWallet /> Receita:
                     </h3>
                     <p>
-                      {movie.revenue > 0
-                        ? formatCurrency(movie.revenue)
+                      {tv.revenue > 0
+                        ? formatCurrency(tv.revenue)
                         : "Não informado"}
                     </p>
                   </div>
                   <div className={styles.info}>
                     <h3>Sinopse:</h3>
                     <p className={styles.overview}>
-                      {movie.overview
-                        ? movie.overview
+                      {tv.overview
+                        ? tv.overview
                         : "Sinopse não disponivel em português."}
                     </p>
                   </div>
@@ -173,4 +173,4 @@ function Movie() {
   );
 }
 
-export default Movie;
+export default Tv;

@@ -35,6 +35,7 @@ function Home() {
           movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
       </div>
 
+      <h2 className={styles.title}>Séries Populares</h2>
       {/* Futuramente, podemos adicionar outras seções aqui, como "Séries Populares" */}
     </div>
   );

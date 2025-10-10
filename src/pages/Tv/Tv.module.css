@@ -1,6 +1,6 @@
-/* Estilo do Fundo e Overlay do Filme */
+/* Estilo do Fundo e Overlay da Série */
 
-.movie_backdrop{
+.serie_backdrop {
     position: relative;
     background-size: cover;
     background-position: top center;
@@ -10,22 +10,23 @@
     padding: 4rem 2rem;
 }
 
-.movie_overlay{
+.serie_overlay {
     position: absolute;
     top: 0;
-    left:0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to top, var(--background-dark) 10%, rgba(0,0,0,0.7));
+    background: linear-gradient(to top, var(--background-dark) 10%, rgba(0, 0, 0, 0.7));
     z-index: 1;
 }
 
-/* Estilo do Conteúdo do Filme */
-.movie_content{
+/* Estilo do Conteúdo da Série */
+.serie_content {
     position: relative;
     z-index: 2;
     display: flex;
-    flex-direction: column; /* Em telas pequenas, fica um em cima do outro */
+    flex-direction: column;
+    /* Em telas pequenas, fica um em cima do outro */
     align-items: center;
     gap: 2rem;
     max-width: 1200px;
@@ -35,15 +36,15 @@
 .poster {
     max-width: 300px;
     border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0,0,0.5);
+    box-shadow: 0 10px 20px rgba(0, 0, 0.5);
 }
 
-.movie_details{
+.serie_details {
     color: var(--text-white);
     text-align: center;
 }
 
-.movie_details h1 {
+.serie_details h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
 }
@@ -57,7 +58,7 @@
     margin-bottom: 2rem;
 }
 
-.info_bar{
+.info_bar {
     display: flex;
     gap: 2rem;
     justify-content: center;
@@ -73,31 +74,37 @@
 .info {
     margin-bottom: 1.5rem;
 }
+
 .info h3 {
     color: var(--netflix-red);
     font-size: 1.3rem;
     margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
-    gap:0.5rem;
-}
-.rating{
-    width:70px; /* Define o tamanho do círculo */
+    gap: 0.5rem;
 }
 
-.overview{
-line-height: 1.7;
+.rating {
+    width: 70px;
+    /* Define o tamanho do círculo */
+}
+
+.overview {
+    line-height: 1.7;
 }
 
 /* Estilo para telas Maiores(Responsividade) */
 @media(min-width: 768px) {
-    .movie_content{
-        flex-direction: row; /* Em telas maiores, fica lado a lado */
+    .serie_content {
+        flex-direction: row;
+        /* Em telas maiores, fica lado a lado */
         align-items: flex-start;
     }
-    .movie_details {
+
+    .serie_details {
         text-align: left;
     }
+
     .info_bar {
         justify-content: flex-start;
     }
@@ -121,7 +128,7 @@ line-height: 1.7;
 }
 
 /* Ajuste para alinhar à esquerda em telas Maiores */
-@media(min-width: 768px){
+@media(min-width: 768px) {
     .genres {
         justify-content: flex-start;
     }

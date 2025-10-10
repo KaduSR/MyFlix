@@ -7,6 +7,7 @@ import Home from "./pages/Home/Home";
 
 import Movie from "./pages/Movie/Movie";
 import Search from "./pages/Search/Search";
+import Series from "./pages/Tv/Tv";
 
 import "./index.css";
 
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
         path: "movie/:id",
         element: <Movie />,
       },
+      {
+        path: "series/:id",
+        element: <Series />,
+      }
     ],
   },
 ]);
