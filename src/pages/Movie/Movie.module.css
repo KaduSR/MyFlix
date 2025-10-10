@@ -1,0 +1,54 @@
+.movie_page {
+    color: var(--text-white);
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    padding: 2rem;
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.poster {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.movie_details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.tagline {
+    text-align: center;
+    font-style: italic;
+    color: var(--text-gray);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.info{
+    margin-bottom: 1rem;
+}
+
+.info h3 {
+    color: var(--netflix-red);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.overview {
+    line-height: 1.6;
+}
+
+/* Deixe o layout lado a lado em telas maiores */
+@media (min-width: 768px) {
+    .movie_page {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 3rem;
+    }
+}
