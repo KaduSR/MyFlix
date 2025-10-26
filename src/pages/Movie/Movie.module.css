@@ -10,6 +10,26 @@
     padding: 4rem 2rem;
 }
 
+.cast_container {
+    display: flex;
+    gap: 1.5rem;
+    padding-bottom: 1rem;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--netflix-red) var(--background-medium)
+}
+
+.recommendations_container {
+    display: flex;
+    gap: 1.5rem;
+    padding-bottom: 1rem;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--netflix-red) var(--background-medium)
+}
+
 .movie_overlay{
     position: absolute;
     top: 0;
