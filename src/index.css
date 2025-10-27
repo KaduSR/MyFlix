@@ -74,7 +74,6 @@ img {
 a:focus,
 button:focus,
 input:focus {
-  outline: 2px solid var(--netflix-red);
   outline-offset: 3px;
 }
 
