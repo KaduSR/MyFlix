@@ -52,9 +52,11 @@ function Movie() {
       const response = await fetch(creditsUrl);
       const data = await response.json();
       setCast(data.cast.slice(0, 10)); // Pega os 10 primeiros atores
-      
+
       // Encontra o diretor
-      const movieDirector = data.crew.find(person => person.job === "Director");
+      const movieDirector = data.crew.find(
+        (person) => person.job === "Director"
+      );
       setDirector(movieDirector);
     } catch (error) {
       console.error("Erro ao buscar elenco:", error);
@@ -78,7 +80,7 @@ function Movie() {
     getVideos(id);
     getCast(id);
     getRecommendations(id);
-    
+
     // Scroll para o topo quando mudar de filme
     window.scrollTo(0, 0);
   }, [id]);
@@ -119,7 +121,7 @@ function Movie() {
                   {movie.tagline && (
                     <p className={styles.tagline}>"{movie.tagline}"</p>
                   )}
-                  
+
                   <div className={styles.info_bar}>
                     <div className={styles.rating}>
                       <CircularProgressbar
@@ -233,7 +235,9 @@ function Movie() {
                       )}
                       <div className={styles.cast_info}>
                         <p className={styles.cast_name}>{actor.name}</p>
-                        <p className={styles.cast_character}>{actor.character}</p>
+                        <p className={styles.cast_character}>
+                          {actor.character}
+                        </p>
                       </div>
                     </div>
                   ))}
@@ -245,7 +249,8 @@ function Movie() {
             {recommendations.length > 0 && (
               <section className={styles.recommendations_section}>
                 <h2 className={styles.section_title}>
-                  <span className={styles.title_icon}>💡</span> Você Também Pode Gostar
+                  <span className={styles.title_icon}>💡</span> Você Também Pode
+                  Gostar
                 </h2>
                 <div className={styles.recommendations_container}>
                   {recommendations.map((rec) => (

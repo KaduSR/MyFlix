@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import styles from "./Home.module.css";
-import { FaPlay ,FaInfoCircle } from "react-icons/fa";
+import { FaPlay, FaInfoCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 const apiKey = import.meta.env.VITE_API_KEY;
@@ -26,7 +26,7 @@ function Home() {
       `${moviesApiUrl}?api_key=${apiKey}&language=pt-BR`
     );
     const data = await response.json();
-    setPopularMovies(data.results || []); // FIX: Default to empty array
+    setPopularMovies(data.results);
   }
 
   async function getPopularSeries() {
@@ -34,7 +34,7 @@ function Home() {
       `${seriesApiUrl}?api_key=${apiKey}&language=pt-BR`
     );
     const data = await response.json();
-    setPopularSeries(data.results || []); // FIX: Default to empty array
+    setPopularSeries(data.results);
   }
 
   async function getTrending() {
@@ -42,9 +42,9 @@ function Home() {
       `${trendingUrl}?api_key=${apiKey}&language=pt-BR`
     );
     const data = await response.json();
-    setTrending(data.results || []); // FIX: Default to empty array
-    // Define o primeiro item como hero banner (com segurança)
-    if (data.results && data.results.length > 0) {
+    setTrending(data.results);
+    // Define o primeiro item como hero banner
+    if (data.results.length > 0) {
       setHeroBanner(data.results[0]);
     }
   }
@@ -54,7 +54,7 @@ function Home() {
       `${topRatedMoviesUrl}?api_key=${apiKey}&language=pt-BR`
     );
     const data = await response.json();
-    setTopRated(data.results || []); // FIX: Default to empty array
+    setTopRated(data.results);
   }
 
   async function getUpcoming() {
@@ -62,7 +62,7 @@ function Home() {
       `${upcomingMoviesUrl}?api_key=${apiKey}&language=pt-BR`
     );
     const data = await response.json();
-    setUpcoming(data.results || []); // FIX: Default to empty array
+    setUpcoming(data.results);
   }
 
   useEffect(() => {
@@ -142,7 +142,6 @@ function Home() {
           <span className={styles.title_icon}>🔥</span> Em Alta Hoje
         </h2>
         <div className={styles.movies_container}>
-          {/* A verificação (trending.length) agora é segura */}
           {trending.length === 0 && (
             <div className={styles.loading}>
               <div className={styles.spinner}></div>
@@ -215,21 +214,16 @@ function Home() {
           <span className={styles.title_icon}>🎭</span> Em Breve nos Cinemas
         </h2>
         <div className={styles.movies_container}>
-          {/* Esta lógica já estava correta e segura! */}
-          {!Array.isArray(upcoming) ? (
+          {upcoming.length === 0 && (
             <div className={styles.loading}>
               <div className={styles.spinner}></div>
               <p>Carregando...</p>
             </div>
-          ) : upcoming.length === 0 ? (
-            <p>Nenhum filme encontrado.</p>
-          ) : (
-            upcoming.map((movie) => <MovieCard key={movie.id} movie={movie} />)
           )}
+          {upcoming.length > 0 &&
+            upcoming.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
         </div>
       </section>
-
-      {/* Seções duplicadas removidas */}
     </div>
   );
 }

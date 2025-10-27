@@ -1,9 +1,11 @@
-/* Estilo do Fundo e Overlay da Série */
+.serie_page {
+    background: var(--background-dark);
+}
 
 .serie_backdrop {
     position: relative;
     background-size: cover;
-    background-position: top center;
+    background-position: center;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -16,27 +18,49 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to top, var(--background-dark) 10%, rgba(0, 0, 0, 0.7));
+    background: linear-gradient(to bottom,
+            rgba(10, 10, 10, 0.7) 0%,
+            rgba(20, 20, 20, 0.9) 50%,
+            var(--background-dark) 100%);
     z-index: 1;
 }
 
-/* Estilo do Conteúdo da Série */
 .serie_content {
     position: relative;
     z-index: 2;
     display: flex;
     flex-direction: column;
-    /* Em telas pequenas, fica um em cima do outro */
     align-items: center;
-    gap: 2rem;
+    gap: 2.5rem;
     max-width: 1200px;
     margin: 0 auto;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .poster {
     max-width: 300px;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0.5);
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8),
+        0 0 40px rgba(229, 9, 20, 0.2);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.poster:hover {
+    transform: scale(1.05) rotate(-2deg);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9),
+        0 0 60px rgba(229, 9, 20, 0.4);
 }
 
 .serie_details {
@@ -45,17 +69,22 @@
 }
 
 .serie_details h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin-bottom: 1rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
 }
 
-/* Estilo das informações adicionais */
-
 .tagline {
-    font-size: 1.2rem;
-    color: var(--text-gray);
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.8);
     font-style: italic;
     margin-bottom: 2rem;
+    font-weight: 300;
 }
 
 .info_bar {
@@ -63,41 +92,343 @@
     gap: 2rem;
     justify-content: center;
     margin-bottom: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .info_bar span {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.info_bar span:hover {
+    background: rgba(229, 9, 20, 0.2);
+    transform: translateY(-3px);
+}
+
+.year_badge {
+    background: rgba(229, 9, 20, 0.3) !important;
+    font-weight: 700;
+}
+
+.rating {
+    width: 80px;
+    transition: transform 0.3s ease;
+}
+
+.rating:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.genre {
+    padding: 0.6rem 1.2rem;
+    background: linear-gradient(135deg, rgba(229, 9, 20, 0.2) 0%, rgba(229, 9, 20, 0.1) 100%);
+    border: 1px solid rgba(229, 9, 20, 0.3);
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.genre:hover {
+    background: linear-gradient(135deg, rgba(229, 9, 20, 0.4) 0%, rgba(229, 9, 20, 0.2) 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(229, 9, 20, 0.3);
+}
+
+.trailer_button {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: linear-gradient(135deg, var(--netflix-red) 0%, #b20710 100%);
+    border: none;
+    color: var(--text-white);
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 auto 2rem;
+    box-shadow: 0 8px 25px rgba(229, 9, 20, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.trailer_button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 35px rgba(229, 9, 20, 0.6);
+}
+
+.info_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+    width: 100%;
 }
 
 .info {
-    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.info:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(229, 9, 20, 0.3);
+    transform: translateY(-3px);
 }
 
 .info h3 {
     color: var(--netflix-red);
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-}
-
-.rating {
-    width: 70px;
-    /* Define o tamanho do círculo */
+    gap: 0.7rem;
+    font-weight: 600;
 }
 
 .overview {
-    line-height: 1.7;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.9);
 }
 
-/* Estilo para telas Maiores(Responsividade) */
-@media(min-width: 768px) {
+/* ===== SEASONS INFO ===== */
+.seasons_info {
+    width: 100%;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: 2rem;
+}
+
+.seasons_info h3 {
+    color: var(--netflix-red);
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-weight: 600;
+}
+
+.seasons_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+}
+
+.season_card {
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.season_card:hover {
+    background: rgba(229, 9, 20, 0.1);
+    border-color: rgba(229, 9, 20, 0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(229, 9, 20, 0.2);
+}
+
+.season_number {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: white;
+}
+
+.season_episodes {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.season_year {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* ===== CAST SECTION ===== */
+.cast_section,
+.recommendations_section {
+    padding: 3rem 4rem;
+    background: linear-gradient(180deg, var(--background-dark) 0%, #0a0a0a 100%);
+}
+
+.section_title {
+    font-size: 2rem;
+    color: var(--text-white);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-weight: 700;
+    position: relative;
+    padding-left: 1rem;
+}
+
+.section_title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 80%;
+    background: linear-gradient(180deg, var(--netflix-red) 0%, transparent 100%);
+    border-radius: 2px;
+}
+
+.title_icon {
+    font-size: 1.8rem;
+    animation: iconFloat 2s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.cast_container {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    scroll-behavior: smooth;
+}
+
+.cast_card {
+    min-width: 140px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cast_card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(229, 9, 20, 0.3);
+    border-color: rgba(229, 9, 20, 0.5);
+}
+
+.cast_image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.cast_card:hover .cast_image {
+    transform: scale(1.1);
+}
+
+.cast_placeholder {
+    width: 100%;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.cast_info {
+    padding: 1rem;
+}
+
+.cast_name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    color: white;
+}
+
+.cast_character {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.3;
+}
+
+/* ===== RECOMMENDATIONS SECTION ===== */
+.recommendations_container {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    scroll-behavior: smooth;
+}
+
+/* ===== LOADING STATE ===== */
+.loading_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    gap: 2rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 5px solid rgba(255, 255, 255, 0.1);
+    border-top: 5px solid var(--netflix-red);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (min-width: 768px) {
     .serie_content {
         flex-direction: row;
-        /* Em telas maiores, fica lado a lado */
         align-items: flex-start;
     }
 
@@ -108,50 +439,39 @@
     .info_bar {
         justify-content: flex-start;
     }
-}
 
-/* Estilo dos Gêneros */
-.genres {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    justify-content: center;
-    margin-bottom: 2rem;
-}
-
-.genre {
-    padding: 0.3rem 0.6rem;
-    background-color: var(--background-medium);
-    border: 1px solid var(--border-gray);
-    border-radius: 4px;
-    font-size: 0.9rem;
-}
-
-/* Ajuste para alinhar à esquerda em telas Maiores */
-@media(min-width: 768px) {
     .genres {
         justify-content: flex-start;
     }
+
+    .trailer_button {
+        margin: 0 0 2rem 0;
+    }
 }
 
-/* Trailer */
-.trailer_button {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: none;
-    border: 2px solid var(--text-white);
-    color: var(--text-white);
-    padding: 0.8rem 1.5rem;
-    border-radius: 25px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-    margin: 0 auto;
-}
+@media (max-width: 768px) {
+    .serie_details h1 {
+        font-size: 2.5rem;
+    }
 
-.trailer_button:hover {
-    background-color: var(--text-white);
-    color: var(--background-dark);
+    .poster {
+        max-width: 250px;
+    }
+
+    .cast_section,
+    .recommendations_section {
+        padding: 2rem;
+    }
+
+    .section_title {
+        font-size: 1.8rem;
+    }
+
+    .info_grid {
+        grid-template-columns: 1fr;
+    }
+
+    .seasons_grid {
+        grid-template-columns: 1fr;
+    }
 }

@@ -1,22 +1,101 @@
 .container {
     padding: 2rem 4rem;
+    background: linear-gradient(180deg, var(--background-dark) 0%, #0a0a0a 100%);
+    min-height: 100vh;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .title {
     color: var(--text-white);
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+    font-weight: 700;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    border-left: 5px solid var(--netflix-red);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
 }
 
-/* Deixa o termo pesquisado em vermelho */
+.title:hover {
+    transform: translateX(10px);
+    box-shadow: 0 6px 30px rgba(229, 9, 20, 0.2);
+}
+
 .query_text {
     color: var(--netflix-red);
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--netflix-red) 0%, #ff1f1f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+    animation: pulse 2s ease-in-out infinite;
 }
 
-/* Usa o mesmo layout de grade da nossa página Home */
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
 .movies_container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 2rem;
+    animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.movies_container p {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.6);
+    padding: 3rem;
+    text-align: center;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem 2rem;
+    }
+
+    .title {
+        font-size: 2rem;
+        padding: 1rem;
+    }
+
+    .movies_container {
+        gap: 1.5rem;
+    }
 }
