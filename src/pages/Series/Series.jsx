@@ -95,7 +95,7 @@ function Series() {
                   {serie.tagline && (
                     <p className={styles.tagline}>"{serie.tagline}"</p>
                   )}
-                  
+
                   <div className={styles.info_bar}>
                     <div className={styles.rating}>
                       <CircularProgressbar
@@ -152,7 +152,7 @@ function Series() {
                         <h3>
                           <FaUser /> Criador(es):
                         </h3>
-                        <p>{creators.map(c => c.name).join(", ")}</p>
+                        <p>{creators.map((c) => c.name).join(", ")}</p>
                       </div>
                     )}
 
@@ -186,7 +186,7 @@ function Series() {
                       </h3>
                       <div className={styles.seasons_grid}>
                         {serie.seasons
-                          .filter(season => season.season_number > 0)
+                          .filter((season) => season.season_number > 0)
                           .map((season) => (
                             <div key={season.id} className={styles.season_card}>
                               <span className={styles.season_number}>
@@ -231,7 +231,9 @@ function Series() {
                       )}
                       <div className={styles.cast_info}>
                         <p className={styles.cast_name}>{actor.name}</p>
-                        <p className={styles.cast_character}>{actor.character}</p>
+                        <p className={styles.cast_character}>
+                          {actor.character}
+                        </p>
                       </div>
                     </div>
                   ))}
@@ -243,7 +245,8 @@ function Series() {
             {recommendations.length > 0 && (
               <section className={styles.recommendations_section}>
                 <h2 className={styles.section_title}>
-                  <span className={styles.title_icon}>💡</span> Você Também Pode Gostar
+                  <span className={styles.title_icon}>💡</span> Você Também Pode
+                  Gostar
                 </h2>
                 <div className={styles.recommendations_container}>
                   {recommendations.map((rec) => (

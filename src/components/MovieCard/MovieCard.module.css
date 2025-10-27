@@ -1,14 +1,14 @@
 .movie_card {
-    width: 185px;
+    width: 200px;
     list-style: none;
     flex-shrink: 0;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
 }
 
 .movie_card:hover {
-    transform: translateY(-10px);
-    z-index: 10;
+    transform: translateY(-15px) scale(1.05);
+    z-index: 20;
 }
 
 .movie_card a {
@@ -17,46 +17,171 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+}
+
+.card_image_wrapper {
     position: relative;
+    width: 100%;
+    height: 300px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s ease;
+}
+
+.movie_card:hover .card_image_wrapper {
+    box-shadow: 0 12px 40px rgba(229, 9, 20, 0.5),
+        0 0 60px rgba(229, 9, 20, 0.3);
 }
 
 .movie_image {
     width: 100%;
-    height: 278px;
-    border-radius: 12px;
-    margin-bottom: 0.5rem;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
     object-fit: cover;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    position: relative;
+    transition: transform 0.4s ease;
 }
 
 .movie_card:hover .movie_image {
-    transform: scale(1.08);
-    box-shadow: 0 8px 30px rgba(229, 9, 20, 0.4),
-        0 0 40px rgba(229, 9, 20, 0.2);
-    border-radius: 12px;
+    transform: scale(1.1);
+    filter: brightness(0.5);
 }
 
-.movie_card::before {
-    content: '';
+/* Badge de Tipo (Filme/Série) */
+.type_badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.movie_card:hover .type_badge {
+    transform: scale(1.1);
+}
+
+/* Rating Badge */
+.rating_overlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.star_icon {
+    color: #ffd700;
+    font-size: 0.8rem;
+}
+
+.movie_card:hover .rating_overlay {
+    background: rgba(229, 9, 20, 0.9);
+    transform: scale(1.1);
+}
+
+/* Hover Overlay com Informações */
+.hover_overlay {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    height: 278px;
-    background: linear-gradient(180deg, transparent 0%, rgba(229, 9, 20, 0.1) 100%);
-    border-radius: 12px;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top,
+            rgba(0, 0, 0, 0.95) 0%,
+            rgba(0, 0, 0, 0.7) 50%,
+            transparent 100%);
     opacity: 0;
     transition: opacity 0.4s ease;
-    pointer-events: none;
-    z-index: 1;
+    display: flex;
+    align-items: flex-end;
+    z-index: 3;
 }
 
-.movie_card:hover::before {
+.movie_card:hover .hover_overlay {
     opacity: 1;
 }
 
+.hover_content {
+    padding: 1.5rem;
+    width: 100%;
+    transform: translateY(20px);
+    transition: transform 0.4s ease;
+}
+
+.movie_card:hover .hover_content {
+    transform: translateY(0);
+}
+
+.hover_title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    color: white;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.hover_info {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+    font-size: 0.85rem;
+}
+
+.hover_year,
+.hover_rating {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.hover_description {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.hover_button {
+    width: 100%;
+    padding: 0.6rem;
+    background: linear-gradient(135deg, var(--netflix-red) 0%, #b20710 100%);
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hover_button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(229, 9, 20, 0.6);
+}
+
+/* Título abaixo da imagem */
 .movie_title {
     color: var(--text-white);
     font-size: 1rem;
@@ -70,18 +195,60 @@
     text-overflow: ellipsis;
     transition: color 0.3s ease;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    margin-top: 0.8rem;
+    padding: 0 0.2rem;
 }
 
 .movie_card:hover .movie_title {
     color: var(--netflix-red);
 }
 
+/* Shimmer effect para loading */
+@keyframes shimmer {
+    0% {
+        background-position: -200px 0;
+    }
+
+    100% {
+        background-position: 200px 0;
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .movie_card {
+        width: 160px;
+    }
+
+    .card_image_wrapper {
+        height: 240px;
+    }
+
+    .hover_content {
+        padding: 1rem;
+    }
+
+    .hover_title {
+        font-size: 0.95rem;
+    }
+
+    .hover_description {
+        font-size: 0.75rem;
+    }
+}
+
+/* Desabilita hover em dispositivos touch */
 @media (hover: none) {
     .movie_card:hover {
         transform: none;
     }
 
     .movie_card:hover .movie_image {
-        transform: scale(1.02);
+        transform: none;
+        filter: none;
+    }
+
+    .hover_overlay {
+        display: none;
     }
 }
