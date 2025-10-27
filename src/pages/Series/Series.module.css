@@ -2,6 +2,7 @@
     background: var(--background-dark);
 }
 
+/* ===== HERO SECTION ===== */
 .serie_backdrop {
     position: relative;
     background-size: cover;
@@ -52,20 +53,19 @@
 .poster {
     max-width: 300px;
     border-radius: 16px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8),
-        0 0 40px rgba(229, 9, 20, 0.2);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(229, 9, 20, 0.2);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .poster:hover {
     transform: scale(1.05) rotate(-2deg);
-    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9),
-        0 0 60px rgba(229, 9, 20, 0.4);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), 0 0 60px rgba(229, 9, 20, 0.4);
 }
 
 .serie_details {
     color: var(--text-white);
     text-align: center;
+    width: 100%;
 }
 
 .serie_details h1 {
@@ -181,7 +181,6 @@
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
     margin-bottom: 2rem;
-    width: 100%;
 }
 
 .info {
@@ -215,76 +214,8 @@
     color: rgba(255, 255, 255, 0.9);
 }
 
-/* ===== SEASONS INFO ===== */
-.seasons_info {
-    width: 100%;
-    padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 12px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    margin-top: 2rem;
-}
-
-.seasons_info h3 {
-    color: var(--netflix-red);
-    font-size: 1.3rem;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-    font-weight: 600;
-}
-
-.seasons_grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 1rem;
-}
-
-.season_card {
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif;
-    color: var(--text-white);
-    text-align: left;
-
-}
-
-.season_card:hover {
-    background: rgba(229, 9, 20, 0.1);
-    border-color: rgba(229, 9, 20, 0.4);
-    transform: translateY(-5px);
-    box-shadow: 0 5px 20px rgba(229, 9, 20, 0.2);
-}
-
-.season_number {
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: white;
-}
-
-.season_episodes {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.7);
-}
-
-.season_year {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.5);
-}
-
-/* ===== CAST SECTION ===== */
-.cast_section,
-.recommendations_section {
+/* ===== SEASONS SECTION ===== */
+.seasons_section {
     padding: 3rem 4rem;
     background: linear-gradient(180deg, var(--background-dark) 0%, #0a0a0a 100%);
 }
@@ -328,6 +259,199 @@
     50% {
         transform: translateY(-5px);
     }
+}
+
+.seasons_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.season_card {
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-white);
+    text-align: left;
+}
+
+.season_card:hover {
+    background: rgba(229, 9, 20, 0.1);
+    border-color: rgba(229, 9, 20, 0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(229, 9, 20, 0.3);
+}
+
+.season_card.active {
+    background: rgba(229, 9, 20, 0.2);
+    border-color: rgba(229, 9, 20, 0.6);
+    box-shadow: 0 8px 30px rgba(229, 9, 20, 0.4);
+}
+
+.season_number {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.season_episodes {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.season_year {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* ===== EPISODES SECTION ===== */
+.episodes_loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 3rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.episodes_container {
+    margin-top: 2rem;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.episodes_title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--text-white);
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(229, 9, 20, 0.3);
+}
+
+.episodes_list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.episode_card {
+    display: flex;
+    gap: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.episode_card:hover {
+    border-color: rgba(229, 9, 20, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateX(5px);
+}
+
+.episode_image {
+    width: 250px;
+    height: 140px;
+    object-fit: cover;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.episode_card:hover .episode_image {
+    transform: scale(1.05);
+}
+
+.episode_info {
+    flex: 1;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.episode_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.episode_title_group {
+    flex: 1;
+}
+
+.episode_number {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background: rgba(229, 9, 20, 0.2);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--netflix-red);
+    margin-bottom: 0.5rem;
+}
+
+.episode_title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.episode_toggle {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.episode_toggle:hover {
+    background: rgba(229, 9, 20, 0.2);
+    border-color: rgba(229, 9, 20, 0.4);
+    color: var(--netflix-red);
+    transform: scale(1.1);
+}
+
+.episode_overview {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.7;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+.cast_section,
+.recommendations_section {
+    padding: 2rem 4rem;
+    background: linear-gradient(180deg, var(--background-dark) 0%, #0a0a0a 100%);
 }
 
 .cast_container {
@@ -392,7 +516,6 @@
     line-height: 1.3;
 }
 
-/* ===== RECOMMENDATIONS SECTION ===== */
 .recommendations_container {
     display: flex;
     gap: 1.5rem;
@@ -455,6 +578,12 @@
     }
 }
 
+@media (max-width: 1200px) {
+    .episodes_list {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 768px) {
     .serie_details h1 {
         font-size: 2.5rem;
@@ -464,6 +593,7 @@
         max-width: 250px;
     }
 
+    .seasons_section,
     .cast_section,
     .recommendations_section {
         padding: 2rem;
@@ -480,121 +610,9 @@
     .seasons_grid {
         grid-template-columns: 1fr;
     }
-}
 
-.season_card.active {
-    background: rgba(229, 9, 20, 0.2);
-    border-color: rgba(229, 9, 20, 0.6);
-    box-shadow: 0 5px 20px rgba(229, 9, 20, 0.3);
-}
-.episode_toggle_button {
-    background: transparent;
-    border: none;
-    color: rgba(255, 255, 255, 0.6);
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    transition: all 0.2s ease;
-    padding: 0;
-}
-
-.episode_toggle_button:hover {
-    background: rgba(229, 9, 20, 0.2);
-    color: var(--netflix-red);
-    transform: scale(1.1);
-}
-
-.episode_toggle_button:focus {
-    background: rgba(229, 9, 20, 0.1);
-}
-.episodes_loading_container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    padding: 3rem 0;
-    color: rgba(255, 255, 255, 0.7);
-    width: 100%;
-}
-
-/* Container principal da lista de episódios */
-.episodes_container {
-    margin-top: 2rem;
-    width: 100%;
-    animation: fadeInUp 0.5s ease-out;
-    /* Reutiliza a animação que já temos */
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 2rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap:1.5rem;
-}
-
-.episodes_container h4 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    color: var(--text-white);
-}
-
-/* Card individual de cada episódio */
-.episode_card {
-    display: flex;
-    gap: 1.5rem;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 1rem;
-    transition: all 0.3s ease;
-    border: 1px solid transparent;
-}
-
-.episode_card:hover {
-    border-color: rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.episode_image {
-    width: 200px;
-    height: 112px;
-    object-fit: cover;
-    flex-shrink: 0;
-    /* Impede que a imagem encolha */
-}
-
-.episode_info {
-    padding: 1rem 1rem 1rem 0;
-}
-
-.episode_title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: white;
-    margin-bottom: 0.5rem;
-}
-
-.episode_overview {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.7);
-    line-height: 1.6;
-    /* Corta o texto em 2 linhas */
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-/* Responsividade para episódios */
-@media (max-width: 600px) {
     .episode_card {
         flex-direction: column;
-        /* Empilha imagem e texto */
     }
 
     .episode_image {
@@ -603,6 +621,6 @@
     }
 
     .episode_info {
-        padding: 0 1rem 1rem 1rem;
+        padding: 1rem;
     }
 }
