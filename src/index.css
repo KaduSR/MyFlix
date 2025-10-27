@@ -35,7 +35,7 @@ body {
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, var(--netflix-red) 0%, #b20710 100%);
   border-radius: 10px;
-  border: 2px solid var(--background-dark);
+  border: 5px solid var(--background-dark);
 }
 
 ::-webkit-scrollbar-thumb:hover {
